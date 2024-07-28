@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dcu 강경록 플레이리스트</title>
+  <style>
+    .Mark{
+      height: 150px;
+      border: 4px solid rgba(100, 100, 100, 1);
+      border-radius: 28px;
+      color: rgb(12, 111, 7);
+      box-shadow: inset 5px 3px 4px 0px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      font-size: xx-large;
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      line-height: 150px;
+      position: relative;
+      overflow: hidden;
+    }
+    .Mark img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+    #nav{
+     border:1px solid #ccc;
+     border-width:1px 0;
+     list-style:none;
+     margin:0;
+     padding:0;
+     text-align:center;
+     font-size: larger;
+
+    }
+    #nav li{
+       display:inline;
+    }
+    #nav a{
+       display:inline-block;
+       padding:10px;
+       text-decoration-line: none;
+    }
+    ul,li {
+       list-style-type: none;
+       padding-left: 0;
+       margin-left: 0;
+    }
+    .music-play-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      width: 60%;
+    }
+
+    .music-album-cover {
+      width: 50px;
+      height: 50px;
+      border-radius: 3px;
+      margin-right: 16px;
+    }
+
+    .music-info {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      padding: 8px 0;
+      border-top: 1px solid #e5e5e5;
+      cursor: pointer;
+    }
+
+    .music-play-item:last-child .music-info {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .music-info-detail * {
+      font-weight: 400;
+    }
+    .music-info-detail strong {
+      display: block;
+      font-size: 14px;
+  color: #8e8e93;
+    }
+
+    .music-info-detail h1 {
+      font-size: 16px;
+      line-height: 1.2;
+      color: #383838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="Mark">
+      <img src="img/Head_img.jpg" alt="홈 머리 이미지">
+        > KKR PlayList <
+    </div>
+    <div class="menu_icon">
+      <ul id="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="playlist.html">Playlist</a></li>
+      </ul>
+    </div>
+    <h1>운동할 때 듣는노래</h1>
+      <ol class="music-player">
+        <li class="music-play-item">
+          <img src="img/onmyown.jpg" class="music-album-cover" />
+          <div class="music-info">
+            <div class="music-info-detail">
+              <h1>
+                <span>On My Own</span>
+              </h1>
+              <strong>Ashes Remain</strong>
+            </div>
+            <span>
+              02:53
+            </span>
+          </div>
+        <li class="music-play-item">
+          <img src="img/Halloffamethescript.jpg" class="music-album-cover" />
+          <div class="music-info">
+            <div class="music-info-detail">
+              <h1>
+                <span>Hall of fame</span>
+              </h1>
+              <strong>The Script</strong>
+            </div>
+            <span>
+              03:22
+            </span>
+          </div>
+          <li class="music-play-item">
+            <img src="img/Runnin.jpg" class="music-album-cover" />
+            <div class="music-info">
+              <div class="music-info-detail">
+                <h1>
+                  <span>Runnin`</span>
+                </h1>
+                <strong>Adam Lambert</strong>
+              </div>
+              <span>
+                03:49
+              </span>
+            </div>
+        </li>
+      </ol>
+      <h1>공부할 때 듣는노래</h1>
+      <ol class="music-player">
+        <li class="music-play-item">
+          <img src="img/990.jpg" class="music-album-cover" />
+          <div class="music-info">
+            <div class="music-info-detail">
+              <h1>
+                <span>990 (feat. 김심야)</span>
+              </h1>
+              <strong>빈지노 (BeenZino)</strong>
+            </div>
+            <span>
+              03:33
+            </span>
+          </div>
+        <li class="music-play-item">
+          <img src="img/jasminedpr.jpg" class="music-album-cover" />
+          <div class="music-info">
+            <div class="music-info-detail">
+              <h1>
+                <span>Jasmine (prod. CODE KUNST)</span>
+              </h1>
+              <strong>DPR LIVE</strong>
+            </div>
+            <span>
+              03:22
+            </span>
+          </div>
+          <li class="music-play-item">
+            <img src="img/bigaone.jpg" class="music-album-cover" />
+            <div class="music-info">
+              <div class="music-info-detail">
+                <h1>
+                  <span>비가오네 (feat. 박수민)</span>
+                </h1>
+                <strong>긱스 (Geeks)</strong>
+              </div>
+              <span>
+                04:19
+              </span>
+            </div>
+        </li>
+      </ol>
+  </div>
+</body>
+</html>
