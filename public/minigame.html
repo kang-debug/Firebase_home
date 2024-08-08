@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dcu 강경록 홈페이지</title>
+    <link rel="stylesheet" href="minigame.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="Mark">
+            <img src="img/Head_img.jpg">
+            KKR MINIGAME
+        </div>
+        <div>
+            <ul id="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="todoList.html">TodoList</a></li>
+                <li><a href="playlist.html">PlayList</a></li>
+                <li><a href="minigame.html">MiniGame</a></li>
+            </ul>
+        </div>
+        <h1 id="slotMachineTitle">슬롯 머신</h1>
+
+        <div id="box-container">
+            <div id="box"></div>
+            <input type="range" id="lever" value="0">
+            <button id="stopBtn">Stop</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const result = document.getElementById("result");
+        const emoji = ['🍉', '🥇', '🏳️', '🏀', '❌', '🐱', '🍭', '🔑'];
+        function Box() { }
+        Box.prototype = Object.create(HTMLDivElement.prototype);
+        Box.prototype.constructor = Box;
+        Box.prototype.init = function (text) {
+            this.newBox = document.createElement("Box");
+            this.elementUl = document.createElement("ul");
+            for (var i = 0; i <= 10; i++) {
+                this.elementLi = document.createElement("li");
+                this.elementLi.innerHTML = emoji[i];
+                this.elementUl.appendChild(this.elementLi);
+            }
+            this.newBox.appendChild(this.elementUl);
+            this.newBox.setAttribute("class", "newBox");
+            return this.newBox;
+        }
+        Box.prototype.start = function (speed) {
+            this.elementUl.style.position = "absolute";
+            this.elementUl.style.left = "0px";
+            this.elementUl.style.top = "0px";
+            this.y = 0;
+            this.intervalRef = setInterval(() => {
+                this.y -= 10;
+                this.elementUl.style.top = this.y + "px";
+                if (this.y <= -1000) {
+                    this.y = 0;
+                }
+            }, speed);
+        }
+        Box.prototype.stop = function () {
+            clearInterval(this.intervalRef);
+            this.elementUl.style.top = Math.floor(this.y / 150) * 150 + "px";
+            return Math.floor(this.y / 150) * 150;
+        }
+
+        const divBox = document.querySelector("#box");
+
+        const boxArr = [
+            new Box(), new Box(), new Box()
+        ];
+        for (var i = 0; i < boxArr.length; i++) {
+            const newBox = boxArr[i].init();
+            divBox.appendChild(newBox);
+        }
+
+        const lever = document.getElementById("lever");
+        lever.addEventListener('input', function () {
+            if (lever.value == 100) {
+                boxArr.forEach(function (box) {
+                    box.start(Math.floor(5 + Math.random() * 20));
+                });
+            }
+        });
+
+
+        const stopBtn = document.querySelector("#stopBtn");
+        stopBtn.addEventListener('click', function (event) {
+            const positions = [];
+            boxArr.forEach((box, index) => {
+                setTimeout(() => {
+                    positions[index] = box.stop();
+                    if (positions.length === boxArr.length) {
+                        if (positions.every((val, i, arr) => val === arr[0])) {
+
+                            result.innerHTML = `<h1>당첨 되었습니다.</h1>`;
+                            boxArr.forEach(box => {
+                                const blinkli = box.newBox.querySelectorAll("li");
+                                blinkli.forEach(li => {
+                                    li.classList.add('blink');
+                                });
+                            });
+                        }
+                    }
+                }, index * 800);
+            });
+            lever.value = 0;
+        });
+        const slotMachineTitle = document.getElementById("slotMachineTitle");
+        slotMachineTitle.addEventListener('click', function () {
+            const boxContainer = document.getElementById("box-container");
+            boxContainer.style.display = 'flex'; 
+        });
+    </script>
+</body>
+
+</html>
